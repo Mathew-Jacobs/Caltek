@@ -341,6 +341,20 @@ namespace Caltek.Program
                             break;
                     }
                 }
+                else if (!string.IsNullOrEmpty(com))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.Write("\n     Unknown command: ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("'" + com + "' - Type ");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("help ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("for list of ");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("commands\n\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
             //ThirdPart(startTime);
             TempEnd();
