@@ -46,7 +46,8 @@ namespace Caltek.Program
                 Console.Write(" >  ");
                 Console.ForegroundColor = ConsoleColor.White;
                 string com = Console.ReadLine();
-                if (commands.ContainsKey(com))
+                com = com.ToLower();
+                if (commands.Keys.Contains(com))
                 {
                     switch (com)
                     {
@@ -118,7 +119,7 @@ namespace Caltek.Program
         public static void SecondPart(DateTime startTime)
         {
             var part2 = true;
-
+            
 
             Dictionary<string, string> commands = new Dictionary<string, string>()
             {
@@ -180,6 +181,8 @@ namespace Caltek.Program
                 {
                     obj = comFull.Split(' ')[2];
                 }
+
+                com = com.ToLower();
 
                 if (commands.Keys.Contains(com) && string.IsNullOrEmpty(selector))
                 {
@@ -272,44 +275,55 @@ namespace Caltek.Program
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.Write("Invalid filename ");
                                 Console.ForegroundColor = ConsoleColor.White;
-                                Console.Write(select + "\n\n");
+                                Console.Write($"'{select}'\n\n");
                             }
                             break;
                         default:
                             break;
                     }
                 }
-                else if (commands.Keys.Contains(com) && files.Keys.Contains(selector))
+                else if (commands.Keys.Contains(com) && !string.IsNullOrEmpty(selector))
                 {
                     switch (com)
                     {
                         case "cd":
-                            if (selector == "URGENT.txt")
+                            if (files.Keys.Contains(selector))
                             {
-                                Console.Write("\n     ");
-                                Console.ForegroundColor = ConsoleColor.DarkGray;
-                                Console.Write($"Content of {selector}\n");
-                                Console.Write("     ");
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.Write($"{files[selector]}\n\n");
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.Write(" >  ");
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Thread.Sleep(3500);
-                                Console.Clear();
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\n <ERROR> Corrupted file detected. <ERROR>\n");
-                                Console.WriteLine(" Corrupted file removed\n");
-                                files.Remove("URGENT.txt");
+                                if (selector == "URGENT.txt")
+                                {
+                                    Console.Write("\n     ");
+                                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                                    Console.Write($"Content of {selector}\n");
+                                    Console.Write("     ");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write($"{files[selector]}\n\n");
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.Write(" >  ");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Thread.Sleep(3500);
+                                    Console.Clear();
+                                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                                    Console.WriteLine("\n <ERROR> Corrupted file detected. <ERROR>\n");
+                                    Console.WriteLine(" Corrupted file removed\n");
+                                    files.Remove("URGENT.txt");
+                                }
+                                else
+                                {
+                                    Console.Write("\n     ");
+                                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                                    Console.Write($"Content of {selector}\n");
+                                    Console.Write("     ");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write($"{files[selector]}\n\n");
+                                }
                             }
                             else
                             {
                                 Console.Write("\n     ");
-                                Console.ForegroundColor = ConsoleColor.DarkGray;
-                                Console.Write($"Content of {selector}\n");
-                                Console.Write("     ");
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.Write("Invalid filename ");
                                 Console.ForegroundColor = ConsoleColor.White;
-                                Console.Write($"{files[selector]}\n\n");
+                                Console.Write($"'{selector}'\n\n");
                             }
                             break;
                         case "login":
@@ -341,7 +355,7 @@ namespace Caltek.Program
                             break;
                     }
                 }
-                else if (!string.IsNullOrEmpty(com))
+                else if (!string.IsNullOrEmpty(com) && !commands.Keys.Contains(com))
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("\n     Unknown command: ");
@@ -588,6 +602,10 @@ namespace Caltek.Program
                         default:
                             break;
                     }
+                }
+                else
+                {
+
                 }
             }
         }
