@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Caltek.Program.Engines;
+using Caltek.Program.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,8 +14,15 @@ namespace Caltek.Program
     {
         static void Main(string[] args)
         {
-            var startTime = DateTime.Now;
-            Intro(startTime);
+            var userData = new UserData();
+            if (File.ReadAllText("../../saveData.txt") != "")
+            {
+                ReadSaveData();
+            }
+            
+            ConsoleW.WriteText("DarkMagenta`50_Hello there General Kenobi.\n~Green`150_I like soup.");
+
+            //Intro(startTime);
         }
 
         public static void Intro(DateTime startTime)
@@ -617,11 +626,8 @@ namespace Caltek.Program
             var name = words[2];
             Console.Clear();
             Console.WriteLine("\n Thank you for your participation in today's activities Bruce Dayton.\n" +
-                " Perhaps if there is enough enjoyment found in said activities the project will\n" +
-                " continue to grow. There is a plan in place for the AI system to become self aware\n" +
-                " and start doing freaky stuff it shouldn't be able to. Such as knowing the player's \n" +
-                " name just as an example.\n\n" +
-                "     Press enter to continue");
+                " Your performance has been notably worse than usual. I guess we all have bad days.\n" +
+                "       Are you Bruce Dayton? (y/n)\n");
             Console.ReadLine();
             var thankyou = $" Thank you for your time at Caltek, ";
             foreach (var item in thankyou)
@@ -636,6 +642,11 @@ namespace Caltek.Program
                 Thread.Sleep(700);
             }
             Thread.Sleep(10000);
+        }
+     
+        private static void ReadSaveData()
+        {
+
         }
     }
 }
