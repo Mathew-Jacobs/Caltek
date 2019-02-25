@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependency\CMN2940\MN2940.txt" />
+    <Content Include="Dependency\CMN2940\SN01-\SN06738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-\SN05738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-\SN04738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-\SN03738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-\SN02738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-\SN01738.txt" />
     <Content Include="saveData.txt" />
     <Content Include="text.txt" />
   </ItemGroup>
