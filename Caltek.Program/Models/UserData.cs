@@ -13,14 +13,17 @@ namespace Caltek.Program.Models
         {
             StartTime = DateTime.Now;
             LastLog = new DateTime(1985, 10, 22);
-            UserName = "Denning";
+            LastName = "Denning";
             NameDatabase = ConfigFiles();
         }
 
         public DateTime StartTime { get; set; }
         public DateTime LastLog { get; set; }
-        public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string[] NameDatabase { get; set; }
+        public bool Recognized { get; set; }
+        public string Gender { get; set; }
 
         private string[] ConfigFiles()
         {

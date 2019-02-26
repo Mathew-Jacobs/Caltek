@@ -19,13 +19,14 @@ namespace Caltek.Program
             {
                 ReadSaveData();
             }
-            
-            ConsoleW.WriteText("DarkMagenta`50_Hello there General Kenobi.\n~Green`150_I like soup.");
 
-            //Intro(startTime);
+            UserCalc.Calc(userData);
+            Console.SetWindowSize(120, 30);
+
+            Intro(userData);
         }
 
-        public static void Intro(DateTime startTime)
+        public static void Intro(UserData user)
         {
             var intro = true;
 
@@ -33,21 +34,26 @@ namespace Caltek.Program
             {
                 { "help", " - Display available commands" },
                 { "login", " - Login on the system" },
-                { "password", " - Display the password" },
-                { "motd", " - Display the message of the day" }
+                { "password", " - Display the password" }
             };
 
-            Console.WriteLine(@"
-       _____          _      
-      / ____|   /\   | |     
-     | |       /  \  | |     
-     | |      / /\ \ | |     
-     | |____ / ____ \| |____ 
-      \_____/_/    \_\______|
+            Console.WriteLine("\t" + @"
+           _____          _      
+          / ____|   /\   | |     
+         | |       /  \  | |     
+         | |      / /\ \ | |     
+         | |____ / ____ \| |____ 
+          \_____/_/    \_\______|
 ");
-            Console.WriteLine("\n Caltek is the world leader in cyber security");
-            Console.WriteLine(" Any and all work done on this device is property of Caltek");
-            Console.WriteLine(" Please login to proceed:\n");
+            Console.WriteLine(" Caltek: The world leader in cyber security\n");
+            Console.WriteLine(" Any and all work done on this\n device is property of Caltek");
+            Console.WriteLine("\n Press any key to continue:\n");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(" >  ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            Console.Clear();
+            Introduction();
             while (intro)
             {
 
@@ -108,27 +114,82 @@ namespace Caltek.Program
                 }
                 else if (!string.IsNullOrEmpty(com))
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.Write("\n     Unknown command: ");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("'" + com + "' - Type ");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write("help ");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("for list of ");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write("commands\n\n");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    var guesses = new List<string>();
+                    foreach (var key in commands.Keys)
+                    {
+                        var diff = Levenshtein.Compute(com, key);
+                        if (diff <= 2)
+                        {
+                            guesses.Add(key);
+                        }
+                    }
+                    if (guesses.Count != 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write("\n     Unknown command: ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("'" + com + "' - Did you mean, ");
+                        if (guesses.Count > 0)
+                        {
+                            for (int i = 0; i < guesses.Count; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.Write($"{guesses[i]}");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                if (i != guesses.Count - 1)
+                                {
+                                    Console.Write(", or ");
+                                }
+                            }
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("?\n     Type ");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write("help ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("for list of ");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write("commands\n\n");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write($"{guesses[0]}");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("?\n     Type ");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write("help ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("for list of ");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write("commands\n\n");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write("\n     Unknown command: ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("'" + com + "' - Type ");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write("help ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("for list of ");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write("commands\n\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 }
             }
             Console.Clear();
-            SecondPart(startTime);
+            SecondPart(user.StartTime);
         }
 
         public static void SecondPart(DateTime startTime)
         {
             var part2 = true;
-            
+
 
             Dictionary<string, string> commands = new Dictionary<string, string>()
             {
@@ -643,10 +704,15 @@ namespace Caltek.Program
             }
             Thread.Sleep(10000);
         }
-     
+
         private static void ReadSaveData()
         {
 
+        }
+
+        private static void Introduction()
+        {
+            ConsoleW.WriteText("White`0_kjadkjl kljda\n kncakljndcaknldsc klnc knaknlj njlkc dlnjkc jnads nljkclkan~Yellow`0_lklkanlc nlk knla klndsnkl ssdan lknsad l");
         }
     }
 }

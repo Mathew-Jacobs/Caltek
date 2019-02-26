@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engines\ConsoleW.cs" />
+    <Compile Include="Engines\Levenshtein.cs" />
+    <Compile Include="Engines\UserCalc.cs" />
     <Compile Include="Models\FormattedText.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Program.cs" />
@@ -53,12 +55,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependency\CMN2940\MN2940.txt" />
-    <Content Include="Dependency\CMN2940\SN01-\SN06738.txt" />
-    <Content Include="Dependency\CMN2940\SN01-\SN05738.txt" />
-    <Content Include="Dependency\CMN2940\SN01-\SN04738.txt" />
-    <Content Include="Dependency\CMN2940\SN01-\SN03738.txt" />
-    <Content Include="Dependency\CMN2940\SN01-\SN02738.txt" />
-    <Content Include="Dependency\CMN2940\SN01-\SN01738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN14738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN13738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN12738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN11738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN10738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN09738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN08738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN07738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN06738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN05738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN04738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN03738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN02738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN01738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN15738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN16738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN17738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN18738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN19738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN20738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN21738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN22738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN23738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN24738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN25738.txt" />
+    <Content Include="Dependency\CMN2940\SN01-26\SN26738.txt" />
+    <Content Include="Dependency\Introduction.txt" />
     <Content Include="saveData.txt" />
     <Content Include="text.txt" />
   </ItemGroup>

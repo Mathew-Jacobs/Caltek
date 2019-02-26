@@ -10,9 +10,22 @@ namespace Caltek.Program.Engines
 {
     public class ConsoleW
     {
+        //  "Color
+        //  `
+        //  PauseTime
+        //  _
+        //  Message
+        //  ~
+        //  Color2
+        //  `
+        //  PauseTime2
+        //  _
+        //  Message2"
         public static void WriteText(string formattedText)
         {
+            Console.Write(" ");
             var split = SplitFormattedText(formattedText);
+            var lineLength = 0;
             foreach (var section in split)
             {
                 switch (section.Color)
@@ -70,20 +83,44 @@ namespace Caltek.Program.Engines
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
-                
-                foreach(var letter in section.Text)
+                var words = section.Text.Split(' ');
+                foreach (var word in words)
                 {
-                    Console.Write(letter);
-                    Thread.Sleep(section.PauseTime);
+                    if (word.Length + lineLength > 50)
+                    {
+                        Console.Write("\n ");
+                        lineLength = 0 + word.Length;
+                    }
+                    else
+                    {
+                        lineLength += word.Length;
+                    }
+                    foreach (var letter in word)
+                    {
+                        if (letter == '\n')
+                        {
+                            lineLength = 0 + word.Length;
+                        }
+                        Console.Write(letter);
+                        if (section.PauseTime > 0)
+                        {
+                            Thread.Sleep(section.PauseTime);
+                        }
+                    }
+                    Console.Write(" ");
                 }
-                Thread.Sleep(section.PauseTime * 2);
+                if (section.PauseTime > 0)
+                {
+                    Thread.Sleep(section.PauseTime * 2);
+                }
             }
+            Console.Write("\n");
         }
 
         private static List<FormattedText> SplitFormattedText(string formattedTextRaw)
         {
             List<FormattedText> formattedText = new List<FormattedText>();
-            var sectionSplit = formattedTextRaw.Split( '~' );
+            var sectionSplit = formattedTextRaw.Split('~');
             foreach (var section in sectionSplit)
             {
                 var formattedSplit = section.Split(new char[] { '`', '_' });

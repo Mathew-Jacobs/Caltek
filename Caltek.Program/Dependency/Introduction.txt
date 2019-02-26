@@ -1,0 +1,12 @@
+﻿		//  "Color
+        //  `
+        //  PauseTime
+        //  _
+        //  Message
+        //  ~
+        //  Color2
+        //  `
+        //  PauseTime2
+        //  _
+        //  Message2"
+White`0_
