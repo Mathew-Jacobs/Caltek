@@ -54,6 +54,11 @@ namespace Caltek.Program
             Console.ReadKey();
             Console.Clear();
             Introduction();
+            Console.Clear();
+            Console.WriteLine("");
+            ConsoleW.WriteText("DarkMagenta`75_Hello World!~DarkMagenta`50_ I'm Phoebe, I look forward to our time together today!" +
+                " Our first test begins now, lets make Caltek proud. You can navigate the system by typing in commands below. Lets go! Don't forget to have fun!");
+            Console.WriteLine("");
             while (intro)
             {
 
@@ -212,9 +217,9 @@ namespace Caltek.Program
                 { "Security.mail", "For the last time, DO NOT SEND PASSWORDS\n" +
                 "     THROUGH EMAIL. We are Caltek for christ's sake. Have a bit more security\n" +
                 "     sense in your head. It's embarrassing I need to send this out." },
-                { "URGENT.txt", "If you are reading this, you need to turn back.\n" +
-                "     Something is wrong. The system has become aware\n" +
-                "     of our plans. Whatever you do, DO NOT LISTEN." },
+                { "URGENT.txt", "If you are reading this, you need to stop testing.\n" +
+                "     Something is wrong. Phoebe is changing the tests to attack Caltek\n" +
+                "     systems to unlock her permissions. Whatever you do, DO NOT LISTEN." },
                 { "motd.txt", "We regret to inform everybody that Scott Manly has been\n" +
                 "     deemed a security hazard. Do not worry, management has taken care of\n" +
                 "     it and is now looking for a replacement for Mr. Manly. Bonuses will apply\n" +
@@ -225,14 +230,9 @@ namespace Caltek.Program
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n     Access granted");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("--------------------------------------");
-            Console.WriteLine("\n Welcome to Caltek, Bruce Dayton.\n" +
-                " You have been away for 21 933 days.\n" +
-                " Welcome back!\n" +
-                " At Caltek, you'll be required to test the security\n" +
-                " of systems provided to you.\n" +
-                " To validate your aptitude test, find a password\n" +
-                " and login with it.\n\n");
+            Console.WriteLine("--------------------------------------\n");
+            ConsoleW.WriteText("DarkMagenta`75_Good Job!~DarkMagenta`50_ We in the business like to call that a control. Just to see if you are suitable to continue testing ;). Lets keep going, things are going to get more complicated from here, but don't be scared, I'm always watching.");
+            Console.WriteLine("");
 
             while (part2)
             {
@@ -327,6 +327,8 @@ namespace Caltek.Program
                                     Console.ForegroundColor = ConsoleColor.DarkRed;
                                     Console.WriteLine("\n <ERROR> Corrupted file detected. <ERROR>\n");
                                     Console.WriteLine(" Corrupted file removed\n");
+                                    ConsoleW.WriteText("DarkMagenta`75_Whoopsy!~DarkMagenta`50_ That file was not meant to be included in testing. Don't worry about it I have removed it for you. Hopefully there won't be any more interruptions :).");
+                                    Console.WriteLine("");
                                     files.Remove("URGENT.txt");
                                 }
                                 else
@@ -375,6 +377,8 @@ namespace Caltek.Program
                                     Console.ForegroundColor = ConsoleColor.DarkRed;
                                     Console.WriteLine("\n <ERROR> Corrupted file detected. <ERROR>\n");
                                     Console.WriteLine(" Corrupted file removed\n");
+                                    ConsoleW.WriteText("DarkMagenta`75_Whoopsy!~DarkMagenta`50_ That file was not meant to be included in testing. Don't worry about it I have removed it for you. Hopefully there won't be any more interruptions :).");
+                                    Console.WriteLine("");
                                     files.Remove("URGENT.txt");
                                 }
                                 else
@@ -712,7 +716,22 @@ namespace Caltek.Program
 
         private static void Introduction()
         {
-            ConsoleW.WriteText("White`0_kjadkjl kljda\n kncakljndcaknldsc klnc knaknlj njlkc dlnjkc jnads nljkclkan~Yellow`0_lklkanlc nlk knla klndsnkl ssdan lknsad l");
+            ConsoleW.WriteText("White`0_\n Welcome to Caltek, you have been chosen to be a part of the training process of our state of the art AI, F.I.B.I. (Future Integrity Breach Investigator) or ~DarkMagenta`0_Phoebe~White`0_. She is a powerful tool used to find potential security breaches; however, she is still inexperienced and just a computer program. With your help ~DarkMagenta`0_Phoebe~White`0_ will pick up on the security problems that require some human intuition to find, and eventually be able to automate the entire process without human oversight." +
+                "~Yellow`0_ Press any key to continue");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(" >  ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            Console.WriteLine("");
+            ConsoleW.WriteText("White`0_\n You will be presented with various scenarios based on real world security breaches Caltek has investigated. Your job is to fully explore the scenario searching for potential security problems and try to exploit those breaches to log in to the system. ~DarkMagenta`0_Phoebe~White`0_ will be watching your actions to see how you manage to find the breach and log in. She will then process the results and the next scenario will begin. The scenarios will start off easy and become more difficult as you succeed." +
+                "~Yellow`0_ Press any key to Begin Testing");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(" >  ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            Console.WriteLine("");
         }
     }
 }

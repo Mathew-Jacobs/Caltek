@@ -84,30 +84,37 @@ namespace Caltek.Program.Engines
                         break;
                 }
                 var words = section.Text.Split(' ');
-                foreach (var word in words)
+                for (int i = 0; i < words.Length; i++)
                 {
-                    if (word.Length + lineLength > 50)
+                    if (words[i].Length + lineLength > 50)
                     {
                         Console.Write("\n ");
-                        lineLength = 0 + word.Length;
+                        lineLength = 0 + words[i].Length;
                     }
                     else
                     {
-                        lineLength += word.Length;
+                        lineLength += words[i].Length;
                     }
-                    foreach (var letter in word)
+                    foreach (var letter in words[i])
                     {
                         if (letter == '\n')
                         {
-                            lineLength = 0 + word.Length;
+                            lineLength = 0 + words[i].Length;
                         }
                         Console.Write(letter);
+                        if (section.PauseTime > 0 && (letter == '!' || letter == '.' || letter == ',' || letter == '?' || letter == ';'))
+                        {
+                            Thread.Sleep(section.PauseTime * 2);
+                        }
                         if (section.PauseTime > 0)
                         {
                             Thread.Sleep(section.PauseTime);
                         }
                     }
-                    Console.Write(" ");
+                    if (i != words.Length - 1)
+                    {
+                        Console.Write(" ");
+                    }
                 }
                 if (section.PauseTime > 0)
                 {
