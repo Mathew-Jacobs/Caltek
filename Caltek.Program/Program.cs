@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -55,6 +56,10 @@ namespace Caltek.Program
             Console.Clear();
             Introduction();
             Console.Clear();
+            using (SoundPlayer player = new SoundPlayer("../../Dependency/Phoebe-01.wav"))
+            {
+                player.Play();
+            }
             Console.WriteLine("");
             ConsoleW.WriteText("DarkMagenta`75_Hello World!~DarkMagenta`50_ I'm Phoebe, I look forward to our time together today!" +
                 " Our first test begins now, lets make Caltek proud. You can navigate the system by typing in commands below. Lets go! Don't forget to have fun!");
@@ -130,6 +135,10 @@ namespace Caltek.Program
                     }
                     if (guesses.Count != 0)
                     {
+                        using (SoundPlayer player = new SoundPlayer("../../Dependency/ComputerError.wav"))
+                        {
+                            player.Play();
+                        }
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.Write("\n     Unknown command: ");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -173,6 +182,10 @@ namespace Caltek.Program
                     }
                     else
                     {
+                        using (SoundPlayer player = new SoundPlayer("../../Dependency/ComputerError.wav"))
+                        {
+                            player.Play();
+                        }
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.Write("\n     Unknown command: ");
                         Console.ForegroundColor = ConsoleColor.White;

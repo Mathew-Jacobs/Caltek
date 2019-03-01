@@ -81,7 +81,9 @@
     <Content Include="Dependency\CMN2940\SN01-26\SN24738.txt" />
     <Content Include="Dependency\CMN2940\SN01-26\SN25738.txt" />
     <Content Include="Dependency\CMN2940\SN01-26\SN26738.txt" />
+    <Content Include="Dependency\ComputerError.wav" />
     <Content Include="Dependency\Introduction.txt" />
+    <Content Include="Dependency\Phoebe-01.wav" />
     <Content Include="saveData.txt" />
     <Content Include="text.txt" />
   </ItemGroup>
