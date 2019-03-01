@@ -56,7 +56,7 @@ namespace Caltek.Program
             Console.Clear();
             Introduction();
             Console.Clear();
-            using (SoundPlayer player = new SoundPlayer("../../Dependency/Phoebe-01.wav"))
+            using (SoundPlayer player = new SoundPlayer("../../Dependency/PhE/Phoebe-01.wav"))
             {
                 player.Play();
             }
